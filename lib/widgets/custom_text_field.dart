@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Widget de campo de texto personalizado para la aplicación.
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
   final String labelText;
@@ -24,25 +23,27 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  // Controla si el texto de la contraseña está oculto o visible.
+  //controla si el texto de la contraseña está oculto o visible
   bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
-      // Oculta el texto si es un campo de contraseña y _obscureText es true.
+      //oculta texto si es un campo de contraseña y _obscureText es true
       obscureText: widget.isPassword && _obscureText,
       validator: widget.validator,
       keyboardType: widget.keyboardType,
       decoration: InputDecoration(
         labelText: widget.labelText,
         prefixIcon: Icon(widget.icon, color: Colors.grey),
-        // Muestra un ícono para alternar la visibilidad de la contraseña.
+        //muestra un ícono para alternar la visibilidad de la contraseña
         suffixIcon: widget.isPassword
             ? IconButton(
                 icon: Icon(
-                  _obscureText ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                  _obscureText
+                      ? Icons.visibility_off_outlined
+                      : Icons.visibility_outlined,
                   color: Colors.grey,
                 ),
                 onPressed: () {

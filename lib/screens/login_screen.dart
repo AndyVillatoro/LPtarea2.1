@@ -11,28 +11,28 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // Clave para el formulario, permite validar y guardar el estado del mismo.
+  //clave para el formulario, permite validar y guardar el estado del mismo
   final _formKey = GlobalKey<FormState>();
-  // Controladores para los campos de texto de correo y contraseña.
+  //controladores para campos de texto de correo y contraseña
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  // Método para simular el inicio de sesión.
+  //metodo simular el inicio de sesión
   void _login() {
-    // Valida el formulario usando la _formKey.
+    //valida el formulario usando la _formKey
     if (_formKey.currentState!.validate()) {
-      // Simulación de autenticación con credenciales fijas.
+      //credenciales fijas
       if ((_emailController.text == 'andy.portillo@unah.hn' &&
               _passwordController.text == '20192001349') ||
           (_emailController.text == 'pramoss@unah.hn' &&
               _passwordController.text == '20232030431')) {
-        // Si las credenciales son correctas, navega a la pantalla de inicio.
+        //i las credenciales son correctas, navega a la pantalla de inicio
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const HomeScreen()),
         );
       } else {
-        // Si las credenciales son incorrectas, muestra un mensaje de error.
+        //si son incorrectas, error
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Correo o contraseña incorrectos')),
         );

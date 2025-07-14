@@ -7,51 +7,51 @@ class RegisterScreen extends StatefulWidget {
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
+// los comentarios son para estudiar :c
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  // Clave para el formulario, permite validar y guardar el estado del mismo.
+  //clave para el formulario, permite validar y guardar el estado del mismo
   final _formKey = GlobalKey<FormState>();
-  // Controladores para los campos de texto.
+  //cControladores para los campos de texto
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  // Método para simular el registro de un nuevo usuario.
+  // Simulaishon
   void _register() {
-    // Valida el formulario usando la _formKey.
+    //valida el formulario usando la _formKey
     if (_formKey.currentState!.validate()) {
-      // Simulación de un registro exitoso.
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Registro exitoso')),
-      );
-      // Regresa a la pantalla anterior (login).
+      //simuleishon registro exitoso
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Registro exitoso')));
+      //regresa a la pantalla anterior (login)
       Navigator.pop(context);
     }
   }
 
-  // Validador para el campo de correo electrónico.
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Este campo es obligatorio';
     }
-    // Valida que el correo termine con '@unah.hn'.
+    //valida que correo termine con '@unah.hn'
     if (!value.endsWith('@unah.hn')) {
       return 'El correo debe ser de dominio @unah.hn';
     }
     return null;
   }
 
-  // Validador para el campo de contraseña.
+  //validador campo de contraseña
   String? _validatePassword(String? value) {
     if (value == null || value.isEmpty) {
       return 'Este campo es obligatorio';
     }
-    // Valida que la contraseña tenga al menos 6 caracteres.
+    //6 caracteres
     if (value.length < 6) {
       return 'La contraseña debe tener al menos 6 caracteres';
     }
-    // Valida que la contraseña contenga al menos un caracter especial.
+    //caracter especial
     if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
       return 'La contraseña debe tener un caracter especial';
     }
